@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Te amo 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: rgb(255,255,255);
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        transition: background-color 0.4s;
+    }
+
+    /* BOTÓN CENTRADO Y FIJO */
+    .centro {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 10;
+    }
+
+    button {
+        padding: 18px 40px;
+        font-size: 24px;
+        border: none;
+        border-radius: 15px;
+        background-color: #ff6f91;
+        color: white;
+        cursor: pointer;
+    }
+
+    #mensaje {
+        margin-top: 25px;
+        font-size: 28px;
+        color: #ff4d6d;
+    }
+
+    .corazon {
+        position: absolute;
+        font-size: 20px;
+        pointer-events: none;
+        animation: flotar 3s forwards;
+    }
+
+    @keyframes flotar {
+        from {
+            transform: translateY(0);
+            opacity: var(--opacidad);
+        }
+        to {
+            transform: translateY(-120px);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="centro">
+    <button onclick="accion()">¡Hazme clic!</button>
+    <div id="mensaje"></div>
+</div>
+
+<script>
+    // 100 idiomas (el primero español SIEMPRE)
+    let idiomas = [
+        "Te amo ❤️",
+        "I love you",
+        "Je t’aime",
+        "Ti amo",
+        "Ich liebe dich",
+        "Eu te amo",
+        "愛してる",
+        "사랑해",
+        "Я тебя люблю",
+        "Te iubesc",
+        "Ik hou van jou",
+        "Jeg elsker deg",
+        "Jag älskar dig",
+        "Jeg elsker dig",
+        "S’agapo",
+        "Szeretlek",
+        "Volim te",
+        "Ljubim te",
+        "Milujem ťa",
+        "Kocham cię",
+        "Te quiero",
+        "Ana behibek",
+        "Amo-te",
+        "Mahal kita",
+        "Saya cinta padamu",
+        "Aku cinta kamu",
+        "Ngiyakuthanda",
+        "Naku penda",
+        "Ek het jou lief",
+        "Mi amas vin",
+        "Me do wo",
+        "Ti voglio bene",
+        "Te iubesc mult",
+        "Seni seviyorum",
+        "Anh yêu em",
+        "Phom rak khun",
+        "Chan rak khun",
+        "Aishiteru yo",
+        "Wo ai ni",
+        "Ngo oi nei",
+        "Main tumse pyaar karta hoon",
+        "Hum tumse pyaar karte hain",
+        "Mina armastan sind",
+        "Ma armastan sind",
+        "Es mīlu tevi",
+        "Aš tave myliu",
+        "Te dua",
+        "Unë të dua",
+        "Ez zaitut",
+        "Ani ohev otach",
+        "Ani ohevet otcha",
+        "Ke a go rata",
+        "Ndiyakuthanda",
+        "Ina sonki",
+        "Taim i’ngra leat",
+        "Tha gaol agam ort",
+        "Mo ni fe re",
+        "Aroha ahau ki a koe",
+        "Te sakam",
+        "Ti amo tanto",
+        "Te amo mucho",
+        "Mi amor por ti",
+        "Ich hab dich lieb",
+        "Je t’adore",
+        "Ti voglio tanto bene",
+        "Te amo demais",
+        "Te amo con todo",
+        "Amor eterno",
+        "Love you always",
+        "Forever love",
+        "My love for you",
+        "All my love",
+        "True love",
+        "Endless love",
+        "Pure love",
+        "Only you",
+        "Always you",
+        "My heart is yours",
+        "You are my love",
+        "With all my heart"
+    ];
+
+    let rosa = 255;
+    let index = 0;
+
+    function accion() {
+        // Vibración celular
+        if (navigator.vibrate) navigator.vibrate(40);
+
+        const mensaje = document.getElementById("mensaje");
+
+        // Cambiar texto (UNO SOLO)
+        if (index < idiomas.length) {
+            mensaje.innerText = idiomas[index];
+            index++;
+        } else {
+            mensaje.innerText = "sos lo mejor que me pasó en la vida 💖";
+        }
+
+        // Fondo rosita CLARO
+        if (rosa > 235) rosa -= 2;
+        document.body.style.backgroundColor = `rgb(255, ${rosa}, ${rosa})`;
+
+        // Corazones INFINITOS
+        for (let i = 0; i < 10; i++) {
+            crearCorazon();
+        }
+    }
+
+    function crearCorazon() {
+        const c = document.createElement("div");
+        c.className = "corazon";
+        c.innerText = "💖";
+
+        c.style.left = Math.random() * window.innerWidth + "px";
+        c.style.top = Math.random() * window.innerHeight + "px";
+        c.style.fontSize = 16 + Math.random() * 30 + "px";
+        c.style.setProperty("--opacidad", Math.random());
+
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+    }
+</script>
+
+</body>
+</html>
